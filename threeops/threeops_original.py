@@ -2,7 +2,6 @@ import sys
 import requests
 import json
 
-screen_name = "wordpress"
 url = "http://www.bbc.co.uk/radio1/playlist.json"
 
 def main(argv):
@@ -15,7 +14,7 @@ def main(argv):
 
     for list_key in data['playlist']:
         record = data['playlist'][list_key][0]
-        print record
+        print record['title']
 
 if __name__ == "__main__":
     main(sys.argv)
