@@ -11,7 +11,7 @@ def main(argv):
     logging.warning("I just printed hello world")
     logging.debug("Now loading twitter data")
 
-    titles = bbc_songs.get_titles()
+    titles = bbc_songs_sync.get_titles()
     for title in titles:
         print( title )
 
