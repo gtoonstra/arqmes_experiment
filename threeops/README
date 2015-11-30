@@ -1,0 +1,13 @@
+"Three ops"  are three ways to run a specific application.
+
+- threeops_original.py  is a script that runs code to retrieve the playlist of BBC radio using a standard script, how
+                        someone would probably start off writing code before any optimization
+
+- threeops_synchronous.py is code after some restructuring. It is more modularized and some cross-cutting concerns 
+                        are taken care of (logging) to facilitate log handling later (through configuration).
+
+- threeops_asynchronous.py shows the further evolution of the code to make better use of the CPU. Instead of explicitly waiting
+                        for the REST call to finish, the application now processes as much as it can in general to "progress"
+                        processing of the application. 
+
+

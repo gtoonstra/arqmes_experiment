@@ -10,5 +10,5 @@ def get_titles(callback):
     for list_key in data['playlist']:
         record = data['playlist'][list_key][0]
         titles.append(record['title'])
-    loop.push( callback, titles )
+    callback(titles)
 

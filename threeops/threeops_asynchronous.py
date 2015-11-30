@@ -15,7 +15,7 @@ def print_titles( loop, titles ):
 def main(argv):
     print("Hello world!")
     logging.warning("I just printed hello world")
-    logging.debug("Now loading twitter data")
+    logging.debug("Now loading BBC data")
     loop = asyncio.get_event_loop()
     loop.call_soon(bbc_songs_async.get_titles, print_titles, loop)
 

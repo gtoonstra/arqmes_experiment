@@ -7,7 +7,7 @@ url = "http://www.bbc.co.uk/radio1/playlist.json"
 def main(argv):
     print("Hello world!")
     print("I just printed hello world")
-    print("Now loading twitter data")
+    print("Now loading BBC data")
 
     data = json.loads(requests.get(url).text)
     print len(data['playlist']), "songs"
