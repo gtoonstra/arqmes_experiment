@@ -10,17 +10,15 @@ def _wrap( ctxt, callback ):
         loop.call_soon( callback, future.result() )
     return inner
 
-def push(ctxt, func, callback):
-    if callback is None:
-        task = asyncio.Task(func())
-    else:
-        cb = _wrap(ctxt, callback)
-        task = asyncio.Task(func())
-        task.add_done_callback(cb)
+def push(ctxt, func):
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(func)
 
 def run():
-    loop.run_forever()
-    loop.close()
+    try:
+        loop.run_forever()
+    finally:
+        loop.close()
 
 def stop():
     loop.stop()
