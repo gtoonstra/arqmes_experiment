@@ -5,17 +5,18 @@ import asyncio
 
 loop = asyncio.get_event_loop()
 
-def wrap( ctxt, callback ):
-    def inner( *args ):
-        loop.call_soon( callback, *args )
+def _wrap( ctxt, callback ):
+    def inner( future ):
+        loop.call_soon( callback, future.result() )
     return inner
 
 def push(ctxt, func, callback):
     if callback is None:
-        loop.call_soon(func)
+        task = asyncio.Task(func())
     else:
-        cb = wrap(ctxt, callback)
-        loop.call_soon(func, cb)
+        cb = _wrap(ctxt, callback)
+        task = asyncio.Task(func())
+        task.add_done_callback(cb)
 
 def run():
     loop.run_forever()
